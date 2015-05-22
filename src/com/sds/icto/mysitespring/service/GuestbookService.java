@@ -7,10 +7,9 @@ import org.springframework.stereotype.Service;
 import com.sds.icto.mysitespring.domain.GuestbookVo;
 import com.sds.icto.mysitespring.repository.GuestbookDao;
 
-@Service
+
 public class GuestbookService {
 
-	@Autowired
 	GuestbookDao guestbookDao;
 
 	public void addBook(GuestbookVo vo) {

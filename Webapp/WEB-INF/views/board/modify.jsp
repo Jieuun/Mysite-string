@@ -14,28 +14,26 @@
 		</div>
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post" action="">
+				<form class="board-form" method="post" action="/Mysite-spring/board/modify">
+				<input type = "hidden" name = "no" value ="${vo.no }">
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글수정</th>
 						</tr>
 						<tr>
 							<td class="label">제목</td>
-							<td><input type="text" name="title" value="제목을 수정할 생각이 없으면  이 입력창을 버리세요!"></td>
+							<td><input type="text" name="title" value="${vo.title }"></td>
 						</tr>
 						<tr>
 							<td class="label">내용</td>
 							<td>
-								<textarea id="content" name="content">수정해야 할 글은 고대로 
-이렇게 textarea에 뿌려야 합니다.
-개행문자 변경도 하지마세요.
-하하하하하
-즐건 과제 되세요~~~~</textarea>
+								<textarea id="content" name="content">${vo.content }
+								</textarea>
 							</td>
 						</tr>
 					</table>
 					<div class="bottom">
-						<a href="">취소</a>
+						<a href="/Mysite-spring/board/view/${vo.no}">취소</a>
 						<input type="submit" value="수정">
 					</div>
 				</form>				

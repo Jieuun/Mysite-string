@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="board">
+	<typeAlias alias="BoardVo" type="com.sds.icto.mysitespring.domain.BoardVo" />
+
+	<resultMap class="BoardVo" id="resultMapList">
+		<result column="no" property="no" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="member_no" property="member_no" />
+		<result column="member_name" property="member_name" />
+		<result column="view_cnt" property="view_cnt" />
+		<result column="reg_date" property="reg_date" />
+	</resultMap>
+
+
+	<insert id="insert" parameterClass="BoardVo">
+	<![CDATA[
+		insert
+		into board
+		values(board_no_seq.nextval, #title#, #content#, 
+				#member_no#, #member_name#,0, sysdate)
+	]]>
+
+	</insert>
+
+
+
+	<select id="list" resultMap="resultMapList">
+	<![CDATA[
+		select * from board order by no desc
+	]]>
+	</select>
+
+
+
+	<delete id="delete" parameterClass="BoardVo">
+	<![CDATA[
+	
+		delete from board
+		where no = #no# and member_no= #member_no#
+	]]>
+
+	</delete>
+
+
+
+
+	<select id="show" resultMap="resultMapList">
+	<![CDATA[
+		select * from board where no = #no#
+	]]>
+
+	</select>
+
+
+
+
+	<update id="edit" parameterClass="BoardVo">
+	<![CDATA[
+	
+		update board set title = #title# , content = #content#  where no = #no#
+	]]>
+	</update>
+
+
+	<update id="updateViewcnt" parameterClass="BoardVo">
+		<![CDATA[
+		update board
+		 set view_cnt=#view_cnt#+1 
+		 where no=#no# 	
+		]]>
+	</update>
+
+	<select id="view" resultMap="resultMapList">
+		<![CDATA[
+		select *
+		  from board where no=#no#
+		]]>
+	</select>
+
+
+</sqlMap>
+	

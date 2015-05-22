@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.sds.icto.mysitespring.domain.MemberVo;
 import com.sds.icto.mysitespring.repository.MemberDao;
 
-@Service
+
 public class MemberService {
 
 	@Autowired

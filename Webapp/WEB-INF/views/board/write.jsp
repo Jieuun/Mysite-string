@@ -14,8 +14,9 @@
 		</div>
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post" action="/Mysite-spring/board">
-					<input type = "hidden" name = "a" value="write">
+				<form class="board-form" method="post" action="/Mysite-spring/board/write">
+					<input type = "hidden" name = "member_no" value = ${authMember.no }>
+					<input type = "hidden" name = "member_name" value = ${authMember.name }>
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>
@@ -32,7 +33,7 @@
 						</tr>
 					</table>
 					<div class="bottom">
-						<a href="/Mysite-spring/board">취소</a>
+						<a href="/Mysite-spring/board/index">취소</a>
 						<input type="submit" value="등록">
 					</div>
 				</form>				

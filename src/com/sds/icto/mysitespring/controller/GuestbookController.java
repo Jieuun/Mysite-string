@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sds.icto.mysitespring.repository.GuestbookDao;
 import com.sds.icto.mysitespring.service.GuestbookService;
 import com.sds.icto.mysitespring.domain.GuestbookVo;
 
@@ -19,26 +19,20 @@ import com.sds.icto.mysitespring.domain.GuestbookVo;
 public class GuestbookController {
 
 	@Autowired
-	GuestbookService guestbookservice;
+	GuestbookDao guestbookdao;
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/index")
 	public String index(Model model) {
-		List<GuestbookVo> list = guestbookservice.showBook();
+		List<GuestbookVo> list = guestbookdao.fetchList();
 		model.addAttribute("list", list);
+		return "guestbook/index";
 
-		return "guestbook/list";
-
-	}
-
-	@RequestMapping(value = "/form", method = RequestMethod.GET)
-	public String form() {
-		return "guestbook/list";
 	}
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute GuestbookVo vo) {
-		guestbookservice.addBook(vo);
-		return "redirect:/guestbook/list";
+		guestbookdao.add(vo);
+		return "redirect:/guestbook/index";
 
 	}
 
@@ -48,10 +42,10 @@ public class GuestbookController {
 		return "guestbook/deleteform";
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete/{no}", method = RequestMethod.POST)
 	public String delete(@ModelAttribute GuestbookVo vo) {
-		guestbookservice.deleteBook(vo);
-		return "redirect:/guestbook/list";
+		guestbookdao.delete(vo);
+		return "redirect:/guestbook/index";
 	}
 
 }

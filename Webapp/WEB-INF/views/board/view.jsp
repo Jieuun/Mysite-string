@@ -20,28 +20,20 @@
 					</tr>
 					<tr>
 						<td class="label">제목</td>
-						<td>안녕하세요</td>
+						<td>${boardvo.title}</td>
 					</tr>
 					<tr>
 						<td class="label">내용</td>
 						<td>
 							<div class="view-content">
-							즐건 과제 되세요~<br>
-							즐건 과제 되세요~<br>
-							즐건 과제 되세요~<br>
-							즐건 과제 되세요~<br>
-							즐건 과제 되세요~<br>
-							즐건 과제 되세요~<br>
-							즐건 과제 되세요~<br>
-							즐건 과제 되세요~<br>
-							즐건 과제 되세요~<br>
+							${boardvo.content}
 							</div>
 						</td>
 					</tr>
 				</table>
 				<div class="bottom">
-					<a href="">글목록</a>
-					<a href="">글수정</a>
+					<a href="/Mysite-spring/board/index">글목록</a>
+					<a href="/Mysite-spring/board/modify/${boardvo.no}">글수정</a>
 				</div>
 			</div>
 		</div>

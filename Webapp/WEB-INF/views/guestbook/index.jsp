@@ -66,7 +66,7 @@
 									<td>${g.no }</td>
 									<td>${g.name }</td>
 									<td>${g.regDate}</td>
-									<td><a href="/Mysite-string/guestbook/delete/${g.no }">삭제</a></td>
+									<td><a href="/Mysite-spring/guestbook/delete/${g.no }">삭제</a></td>
 								</tr>
 								<tr>
 									<td colspan=4>${fn:replace(g.message, newLineChar, "<br>")

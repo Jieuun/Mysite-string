@@ -13,12 +13,13 @@
 		</div>
 		<div id="content">
 			<div id="guestbook" class="delete-form">
-				<form method="post" action="/Mysite-spring/guestbook/delete/${no }">
-					<label>비밀번호</label>
-					<input type="password" name="password">
+				<form method="post" action="/Mysite-spring/board/delete">
+					<input type="hidden" name="no" value="${no}">
+					<input type="hidden" name="member_no" value="${authMember.no }">
+					<label>정말로 삭제하시겠습니까? </label>
 					<input type="submit" value="확인">
 				</form>
-				<a href="/Mysite-spring/guestbook/index">방명록 리스트</a>
+				<a href="/Mysite-spring/board/index">게시물 리스트</a>
 			</div>
 		</div>
 		<div id="navigation">
